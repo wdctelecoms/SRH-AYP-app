@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ask Questions - HRS AYP</title>
+  <link rel="stylesheet" href="styles/style.css" />
+  <script>
+    function submitQuestion() {
+      const q = document.getElementById("question").value.trim();
+      if (q === "") {
+        alert("Please enter a question.");
+        return false;
+      }
+
+      // Save to localStorage for now
+      const questions = JSON.parse(localStorage.getItem("qa") || "[]");
+      questions.push({ question: q, date: new Date().toLocaleString() });
+      localStorage.setItem("qa", JSON.stringify(questions));
+
+      alert("Your question has been submitted anonymously!");
+      document.getElementById("question").value = "";
+      return false;
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>🗣️ Ask a Question</h1>
+    <p>Submit your SRH question anonymously. We'll add answers soon!</p>
+  </header>
+
+  <main>
+    <form onsubmit="return submitQuestion()">
+      <textarea id="question" rows="6" placeholder="Type your question here..." required></textarea><br><br>
+      <button type="submit">Submit Anonymously</button>
+    </form>
+
+    <p><a href="index.html">← Back to Home</a></p>
+  </main>
+
+  <footer>
+    <p>© 2025 HRS - SRH for AYP</p>
+  </footer>
+</body>
+</html>
