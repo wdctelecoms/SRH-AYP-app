@@ -71,14 +71,34 @@
 <body>
   <div class="container">
     <h1>AYP Registration</h1>
-    <form>
-      <input type="text" placeholder="Full Name" required />
-      <input type="email" placeholder="Email Address" required />
-      <input type="number" placeholder="Age" required />
-      <input type="text" placeholder="Location" required />
-      <button type="submit">Submit Registration</button>
-    </form>
-    <br />
+<form id="registration-form">
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Your Email" required>
+  <button type="submit">Submit Registration</button>
+</form>
+
+<script>
+document.getElementById('registration-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const formData = new FormData(this);
+  const data = {
+    name: formData.get('name'),
+    email: formData.get('email')
+  };
+
+  const response = await fetch('/api/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+
+  if (response.ok) {
+    window.location.href = '/dashboard.html';
+  } else {
+    alert('Registration failed. Try again.');
+  }
+});
+</script>
     <a href="index.html">← Back to Dashboard</a>
   </div>
 </body>

@@ -1,14 +1,20 @@
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: #f7f9fc;
-  color: #333;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #2b5876, #4e4376);
+  color: orange;
+  overflow-x: hidden;
   text-align: center;
   padding: 2rem;
 }
 
+header {
+  padding: 20px;
+  text-align: left;
+}
+
 header h1 {
-  color: #1e88e5;
+  color: orange;
   margin-bottom: 0.2rem;
 }
 
@@ -23,7 +29,7 @@ nav li {
 
 nav a {
   text-decoration: none;
-  background-color: #1e88e5;
+  background-color: orange;
   color: white;
   padding: 1rem 2rem;
   border-radius: 8px;
@@ -33,11 +39,84 @@ nav a {
 }
 
 nav a:hover {
-  background-color: #1565c0;
+  background-color: #cc7000;
 }
 
 footer {
   margin-top: 2rem;
   font-size: 0.9rem;
-  color: #666;
+  color: #ffd699;
+}
+
+.get-started {
+  background-color: orange;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 90vh;
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  color: #ddd;
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 120px;
+  background: url('https://svgshare.com/i/uHk.svg') repeat-x;
+  animation: waveMove 10s linear infinite;
+}
+
+@keyframes waveMove {
+  0% { background-position-x: 0; }
+  100% { background-position-x: 1000px; }
+}
+
+/* Center input boxes */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 300px;
+  max-width: 90%;
 }
