@@ -1,105 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Register for AYP</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #2b5876, #4e4376);
-      font-family: Arial, sans-serif;
-      color: orange;
-    }
-
-    .container {
-      background: rgba(255, 255, 255, 0.1); /* semi-transparent box */
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      text-align: center;
-      width: 100%;
-      max-width: 400px;
-      backdrop-filter: blur(5px); /* optional glass effect */
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    input, button {
-      padding: 10px;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-    }
-
-    input {
-      background: white;
-      color: #333;
-    }
-
-    button {
-      background-color: orange;
-      color: #4e4376;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #ffaa00;
-    }
-
-    a {
-      color: orange;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>Sign Up - AYP</title>
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
   <div class="container">
-    <h1>AYP Registration</h1>
-<form id="registration-form">
-  <input type="text" name="name" placeholder="Your Name" required>
-  <input type="email" name="email" placeholder="Your Email" required>
-  <button type="submit">Submit Registration</button>
-</form>
-
-<script>
-document.getElementById('registration-form').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const formData = new FormData(this);
-  const data = {
-    name: formData.get('name'),
-    email: formData.get('email')
-  };
-
-  const response = await fetch('/api/register', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  });
-
-  if (response.ok) {
-    window.location.href = '/main.html';
-  } else {
-    alert('Registration failed. Try again.');
-  }
-});
-</script>
-    <a href="index.html">← Back</a>
+    <h2>Create an AYP Account</h2>
+    <form id="signup-form">
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button type="submit">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="login.html">Login</a></p>
   </div>
+
+  <script type="module" src="/js/auth.js"></script>
 </body>
 </html>
