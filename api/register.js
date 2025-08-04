@@ -9,8 +9,8 @@ export default async function handler(req, res) {
 
   const { name, email } = req.body;
 
-  const adminEmail = 'washingtonmulumbi46@gmail.com'; // replace with your Gmail
-  const gmailAppPassword = 'iydw ceew zhbb gzvz'; // Use Gmail App Password
+  const adminEmail = 'aypsrhnetwork@gmail.com'; // replace with your Gmail
+  const gmailAppPassword = 'ukbo kckv pmjg dmwf'; // Use Gmail App Password
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
