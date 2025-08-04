@@ -4,7 +4,6 @@ body {
   background: linear-gradient(135deg, #2b5876, #4e4376);
   color: orange;
   overflow-x: hidden;
-  text-align: center;
   padding: 2rem;
 }
 
@@ -46,17 +45,7 @@ footer {
   margin-top: 2rem;
   font-size: 0.9rem;
   color: #ffd699;
-}
 
-.get-started {
-  background-color: orange;
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 30px;
-  font-size: 16px;
-  cursor: pointer;
-  animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
