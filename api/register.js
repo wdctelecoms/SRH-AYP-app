@@ -1,45 +1,32 @@
-// api/register.js
-
+// /api/register.js
 import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).send('Method Not Allowed');
-  }
+  if (req.method !== 'POST') return res.status(405).end();
 
-  const { name, email } = req.body;
+  const { email, password } = req.body;
 
-  const adminEmail = 'aypsrhnetwork@gmail.com'; // replace with your Gmail
-  const gmailAppPassword = 'ukbo kckv pmjg dmwf'; // Use Gmail App Password
-
+  // 1. Send Welcome Email (using Gmail SMTP)
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: adminEmail,
-      pass: gmailAppPassword
+      user: 'aypsrhnetwork@gmail.com'
+    process.env.EMAIL_USERNAME, // your email
+      pass: 'ukbo kckv pmjg dmwfo'
+    process.env.EMAIL_PASSWORD  // your app password (not your real email password!)
     }
   });
 
-  try {
-    // Email to admin
-    await transporter.sendMail({
-      from: adminEmail,
-      to: adminEmail,
-      subject: 'New AYP Registration',
-      text: `Name: ${name}\nEmail: ${email}`
-    });
+  await transporter.sendMail({
+    from: '"CyberSentinel 360" <' + process.env.EMAIL_USERNAME + '>',
+    to: email,
+    subject: "Welcome to CyberSentinel 360!",
+    text: "Thanks for signing up with us!",
+    html: "<h1>Welcome!</h1><p>Thanks for signing up with CyberSentinel 360.</p>"
+  });
 
-    // Email to user
-    await transporter.sendMail({
-      from: adminEmail,
-      to: email,
-      subject: 'Welcome to AYP',
-      text: `Hi ${name},\n\nThank you for signing up to AYP. Your details have been submitted.`
-    });
+  // 2. Save user (as JSON file - optional step if needed)
+  // You can skip this or use Planetscale, Supabase, etc. if you want to store accounts
 
-    res.status(200).json({ success: true });
-  } catch (error) {
-    console.error('Email error:', error);
-    res.status(500).json({ error: 'Email failed' });
-  }
+  return res.status(200).json({ message: "Registration successful. Welcome email sent!" });
 }
