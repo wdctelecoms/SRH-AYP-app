@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Sign Up - AYP</title>
-  <link rel="stylesheet" href="/css/styles.css">
+  <meta charset="UTF-8" />
+  <title>Register - AYP</title>
+  <link rel="stylesheet" href="/css/styles.css" />
 </head>
 <body>
   <div class="container">
@@ -25,14 +25,27 @@
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
 
-      const response = await fetch("/api/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password })
-      });
+      try {
+        const res = await fetch("/api/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ name, email, password })
+        });
 
-      const result = await response.json();
-      alert(result.message || "Submitted!");
+        const data = await res.json();
+
+        if (res.ok) {
+          alert(data.message || "Registered successfully!");
+          window.location.href = "dashboard.html"; // redirect
+        } else {
+          alert("Error: " + (data.error || "Failed to register."));
+        }
+      } catch (err) {
+        alert("Something went wrong. Check console.");
+        console.error(err);
+      }
     });
   </script>
 </body>
