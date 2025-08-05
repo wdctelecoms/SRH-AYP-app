@@ -1,85 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Register for AYP</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Login</title>
   <style>
     body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       background: linear-gradient(135deg, #2b5876, #4e4376);
       font-family: Arial, sans-serif;
       color: orange;
-    }
-
-    .container {
-      background: rgba(255, 255, 255, 0.1); /* semi-transparent box */
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
       text-align: center;
-      width: 100%;
-      max-width: 400px;
-      backdrop-filter: blur(5px); /* optional glass effect */
+      padding-top: 100px;
     }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
     input, button {
-      padding: 10px;
-      font-size: 16px;
+      display: block;
+      margin: 20px auto;
+      padding: 12px;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
     }
-
-    input {
-      background: white;
-      color: #333;
-    }
-
     button {
-      background-color: orange;
-      color: #4e4376;
-      font-weight: bold;
+      background-color: #ff7f00;
+      color: white;
       cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #ffaa00;
-    }
-
-    a {
-      color: orange;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
-    a:hover {
-      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>AYP Registration</h1>
-    <form>
-      <input type="text" placeholder="Full Name" required />
-      <input type="email" placeholder="Email Address" required />
-      <input type="number" placeholder="Age" required />
-      <input type="text" placeholder="Location" required />
-      <button type="submit">Submit Registration</button>
-    </form>
-    <br />
-    <a href="index.html">← Back to Dashboard</a>
-  </div>
+  <h2>AYP Login</h2>
+<form id="registerForm">
+  <input type="text" name="name" placeholder="Full Name" required />
+  <input type="email" name="email" placeholder="Email" required />
+  <button type="submit">Submit Registration</button>
+</form>
+
+<script>
+  document.getElementById('registerForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const body = Object.fromEntries(formData.entries());
+
+    const res = await fetch('/api/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+
+    if (res.ok) {
+      window.location.href = '/dashboard.html';
+    } else {
+      alert('Registration failed. Try again.');
+    }
+  });
+</script>
 </body>
 </html>
