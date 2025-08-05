@@ -1,52 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Register - AYP</title>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <title>Login</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #2b5876, #4e4376);
+      font-family: Arial, sans-serif;
+      color: orange;
+      text-align: center;
+      padding-top: 100px;
+    }
+    input, button {
+      display: block;
+      margin: 20px auto;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+    }
+    button {
+      background-color: #ff7f00;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h2>Create an AYP Account</h2>
-    <form id="signup-form">
-      <input type="text" id="name" placeholder="Full Name" required />
-      <input type="email" id="email" placeholder="Email" required />
-      <input type="password" id="password" placeholder="Password" required />
-      <button type="submit">Sign Up</button>
-    </form>
-    <p>Already have an account? <a href="login.html">Login</a></p>
-  </div>
-
-  <script>
-    document.getElementById("signup-form").addEventListener("submit", async function(e) {
-      e.preventDefault();
-
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
-      try {
-        const res = await fetch("/api/register", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ name, email, password })
-        });
-
-        const data = await res.json();
-
-        if (res.ok) {
-          alert(data.message || "Registered successfully!");
-          window.location.href = "dashboard.html"; // redirect
-        } else {
-          alert("Error: " + (data.error || "Failed to register."));
-        }
-      } catch (err) {
-        alert("Something went wrong. Check console.");
-        console.error(err);
-      }
-    });
-  </script>
+  <h2>AYP Login</h2>
+  <form method="POST" action="/login">
+    <input type="email" name="email" placeholder="Enter your email" required />
+    <input type="password" name="password" placeholder="Enter your password" required />
+    <button type="submit">Login</button>
+  </form>
 </body>
 </html>
