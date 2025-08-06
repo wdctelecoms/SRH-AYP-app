@@ -25,7 +25,7 @@ export default async function handler(req, res) {
       from: adminEmail,
       to: adminEmail,
       subject: 'New AYP Registration',
-      text: `New Registration:\nName: ${name}\nEmail: ${email}`
+      text: `New Registration:\nName: ${name}\nEmail: ${email}\nAge: ${age}\nResidence: ${residence}\nPhone: ${phone}`
     });
 
     // 2. Send to user

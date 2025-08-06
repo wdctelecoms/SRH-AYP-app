@@ -1,34 +1,96 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Login</title>
+<title>registration</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
     body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background: linear-gradient(135deg, #2b5876, #4e4376);
       font-family: Arial, sans-serif;
       color: orange;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1); /* semi-transparent box */
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
       text-align: center;
-      padding-top: 100px;
+      width: 100%;
+      max-width: 400px;
+      backdrop-filter: blur(5px); /* optional glass effect */
     }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
     input, button {
-      display: block;
-      margin: 20px auto;
-      padding: 12px;
+      padding: 10px;
+      font-size: 16px;
       border: none;
-      border-radius: 8px;
+      border-radius: 5px;
     }
+
+    input {
+      background: white;
+      color: #333;
+    }
+
     button {
-      background-color: #ff7f00;
-      color: white;
+      background-color: orange;
+      color: #4e4376;
+      font-weight: bold;
       cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ffaa00;
+    }
+
+    a {
+      color: orange;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <h2>AYP Login</h2>
+<div class="container">
+  <h2 class="form-title">AYP Registration form</h2>
 <form id="registerForm">
+  <label for="text">Full Name:</label><br>
   <input type="text" name="name" placeholder="Full Name" required />
+  <label for="text">Residence:</label><br>
+  <input type="text" name="residence" placeholder="Residence" required />
+  <label for="age">Email:</label><br>
   <input type="email" name="email" placeholder="Email" required />
+  <label for="phone">Phone Number:</label><br>
+  <select name="countryCode" required>
+    <option value="">Select Code</option>
+    <option value="+260"> Zambia (+260)</option>
+    <option value="+254"> Kenya (+254)</option>
+    <option value="+234"> Nigeria (+234)</option>
+    <option value="+27">South Africa (+27)</option>
+    <option value="+1">USA (+1)</option>
+    <!-- Add more as needed -->
+  </select>
+  <input type="tel" name="phone" placeholder="Phone Number" required pattern="[0-9]{7,15}" />
+  <br><br>
+  <label for="age">Age:</label><br>
+  <input type="number" name="age" min="1" max="120" required placeholder="Enter your age" />
+  <br><br>
   <button type="submit">Submit Registration</button>
 </form>
 
