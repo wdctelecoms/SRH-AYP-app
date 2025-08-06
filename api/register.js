@@ -5,12 +5,11 @@ export default async function handler(req, res) {
     return res.status(405).send('Method Not Allowed');
   }
 
-  const { name, email } = req.body;
+  const { name, email, age, residence, countryCode, phone } = req.body;
 
-  const adminEmail = 'aypsrhnetwork@gmail.com'; // Replace with your Gmail
-  const gmailAppPassword = 'ukbo kckv pmjg dmwf'; // Use App Password from Gmail
+  const adminEmail = 'aypsrhnetwork@gmail.com';
+  const gmailAppPassword = 'ukbo kckv pmjg dmwf';
 
-  // Setup transporter
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -20,15 +19,15 @@ export default async function handler(req, res) {
   });
 
   try {
-    // 1. Send to admin
+    // Send to admin
     await transporter.sendMail({
       from: adminEmail,
       to: adminEmail,
       subject: 'New AYP Registration',
-      text: `New Registration:\nName: ${name}\nEmail: ${email}\nAge: ${age}\nResidence: ${residence}\nPhone: ${phone}`
+      text: `New Registration:\nName: ${name}\nEmail: ${email}\nAge: ${age}\nResidence: ${residence}\nPhone: ${countryCode}${phone}`
     });
 
-    // 2. Send to user
+    // Send confirmation to user
     await transporter.sendMail({
       from: adminEmail,
       to: email,
