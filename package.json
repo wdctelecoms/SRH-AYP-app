@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/wdctelecoms/SRH-AYP-app#readme",
   "dependencies": {
+    "@supabase/supabase-js": "^2.54.0",
     "nodemailer": "^7.0.5"
   }
 }

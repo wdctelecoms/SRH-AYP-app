@@ -1,4 +1,11 @@
 import nodemailer from 'nodemailer';
+import { createClient } from '@supabase/supabase-js';
+
+// Connect to Supabase
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_ANON_KEY
+);
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -7,8 +14,29 @@ export default async function handler(req, res) {
 
   const { name, email, age, residence, countryCode, phone } = req.body;
 
-  const adminEmail = 'aypsrhnetwork@gmail.com';
-  const gmailAppPassword = 'ukbo kckv pmjg dmwf';
+  // Check if email already exists
+  const { data: existingUser } = await supabase
+    .from('users')
+    .select('*')
+    .eq('email', email)
+    .single();
+
+  if (existingUser) {
+    return res.status(400).json({ error: 'Email already registered.' });
+  }
+
+  // Save new user
+  const { error: dbError } = await supabase
+    .from('users')
+    .insert([{ name, email, age, residence, country_code: countryCode, phone }]);
+
+  if (dbError) {
+    return res.status(500).json({ error: 'Database error.' });
+  }
+
+  // Email credentials
+  const adminEmail = process.env.ADMIN_EMAIL;
+  const gmailAppPassword = process.env.GMAIL_APP_PASSWORD;
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
