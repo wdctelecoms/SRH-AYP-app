@@ -1,67 +1,56 @@
-// server.js
-const express = require('express');
-const cors = require('cors');
-const sqlite3 = require('sqlite3').verbose();
-const nodemailer = require('nodemailer');
+const express = require("express");
+const fs = require("fs");
+const path = require("path");
+const bodyParser = require("body-parser");
 
 const app = express();
-app.use(cors());
-app.use(express.json());
-
-const db = new sqlite3.Database('./users.db');
-
-db.run(`
-  CREATE TABLE IF NOT EXISTS users (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT,
-    email TEXT UNIQUE,
-    password TEXT
-  )
-`);
-
-// Gmail SMTP transport setup
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'aypsrhnetwork@gmail.com',
-    pass: 'ukbo kckv pmjg dmwf' // You must use a Gmail App Password
-  }
-});
-
-app.post('/signup', (req, res) => {
-  const { name, email, password } = req.body;
-  const insert = `INSERT INTO users (name, email, password) VALUES (?, ?, ?)`;
-
-  db.run(insert, [name, email, password], function (err) {
-    if (err) return res.status(400).json({ message: 'User already exists' });
-
-    // Send welcome email
-    const mailOptions = {
-      from: 'aypsrhnetwork@gmail.com',
-      to: email,
-      subject: 'Welcome to AYP!',
-      text: `Hi ${name},\n\nThanks for signing up with us!`
-    };
-
-    transporter.sendMail(mailOptions, (error) => {
-      if (error) return res.status(500).json({ message: 'Signup done, but failed to send email.' });
-      res.status(200).json({ message: 'Signup successful! Email sent.' });
-    });
-  });
-});
-
-app.post('/login', (req, res) => {
-  const { email, password } = req.body;
-  const query = `SELECT * FROM users WHERE email = ? AND password = ?`;
-
-  db.get(query, [email, password], (err, row) => {
-    if (row) {
-      res.json({ success: true, message: 'Login successful' });
-    } else {
-      res.status(401).json({ success: false, message: 'Invalid credentials' });
-    }
-  });
-});
-
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+const usersFile = path.join(__dirname, "users.json");
+
+// Middleware
+app.use(bodyParser.json());
+app.use(express.static("public"));
+
+// Register endpoint
+app.post("/register", (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ success: false, message: "Email and password are required" });
+  }
+
+  let users = [];
+  if (fs.existsSync(usersFile)) {
+    users = JSON.parse(fs.readFileSync(usersFile));
+  }
+
+  if (users.find(u => u.email === email)) {
+    return res.status(400).json({ success: false, message: "User already exists" });
+  }
+
+  users.push({ email, password });
+  fs.writeFileSync(usersFile, JSON.stringify(users, null, 2));
+
+  res.json({ success: true });
+});
+
+// Login endpoint
+app.post("/login", (req, res) => {
+  const { email, password } = req.body;
+
+  let users = [];
+  if (fs.existsSync(usersFile)) {
+    users = JSON.parse(fs.readFileSync(usersFile));
+  }
+
+  const user = users.find(u => u.email === email && u.password === password);
+  if (!user) {
+    return res.status(401).json({ success: false, message: "Invalid credentials" });
+  }
+
+  res.json({ success: true });
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
