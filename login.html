@@ -8,14 +8,27 @@
 <body>
   <div class="container">
     <h2>Login to AYP</h2>
-    <form id="login-form">
-      <input type="email" id="login-email" placeholder="Email" required><br>
-      <input type="password" id="login-password" placeholder="Password" required><br>
-      <button type="submit">Login</button>
-    </form>
-    <p>Don't have an account? <a href="signup.html">Sign up</a></p>
-  </div>
+<form id="loginForm">
+  <input type="email" id="email" placeholder="Email" required>
+  <input type="password" id="password" placeholder="Password" required>
+  <button type="submit">Login</button>
+</form>
 
-  <script type="module" src="/js/auth.js"></script>
+<script>
+  document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+
+    if (storedUser && storedUser.email === email && storedUser.password === password) {
+      window.location.href = "main.html";
+    } else {
+      alert("Invalid email or password!");
+    }
+  });
+</script>
 </body>
 </html>
