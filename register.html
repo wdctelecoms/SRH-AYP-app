@@ -70,53 +70,32 @@
 <div class="container">
   <h2 class="form-title">AYP Registration form</h2>
 <form id="registerForm">
-  <label for="text">Full Name:</label><br>
-  <input type="text" name="name" placeholder="Full Name" required />
-  <label for="text">Residence:</label><br>
-  <input type="text" name="residence" placeholder="Residence" required />
-  <label for="age">Email:</label><br>
-  <input type="email" name="email" placeholder="Email" required />
-  <label for="phone">Phone Number:</label><br>
-  <select name="countryCode" required>
-    <option value="">Select Code</option>
-    <option value="+260"> Zambia (+260)</option>
-    <option value="+254"> Kenya (+254)</option>
-    <option value="+234"> Nigeria (+234)</option>
-    <option value="+27">South Africa (+27)</option>
-    <option value="+1">USA (+1)</option>
-    <!-- Add more as needed -->
-  </select>
-  <input type="tel" name="phone" placeholder="Phone Number" required pattern="[0-9]{7,15}" />
-  <br><br>
-  <label for="age">Age:</label><br>
-  <input type="number" name="age" min="1" max="120" required placeholder="Enter your age" />
-  <br><br>
-  <label for="password">Password:</label><br>
-  <input type="password" name="password" placeholder="Enter Password" required />
-  <br><br>
-  <button type="submit">Submit Registration</button>
-</form>
-<script>
-document.getElementById('registerForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <input type="text" id="phone" placeholder="Phone Number" required>
+        <input type="text" id="residence" placeholder="Residence" required>
+        <input type="number" id="age" placeholder="Age" min="1" required>
+        <button type="submit">Register</button>
+    </form>
 
-  const username = document.getElementById('username').value;
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
+    <script>
+        document.getElementById("registerForm").addEventListener("submit", function(e) {
+            e.preventDefault();
 
-  const res = await fetch('/api/register', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username, email, password })
-  });
+            // Get values
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let phone = document.getElementById("phone").value;
+            let residence = document.getElementById("residence").value;
+            let age = document.getElementById("age").value;
 
-  const data = await res.json();
-  alert(data.message);
+            // Save to localStorage
+            let userData = { email, password, phone, residence, age };
+            localStorage.setItem("user", JSON.stringify(userData));
 
-  if (res.ok) {
-    window.location.href = 'main.html';
-  }
-});
-</script>
+            // Redirect to main page
+            window.location.href = "main.html";
+        });
+    </script>
 </body>
 </html>
