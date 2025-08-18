@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SocialApp - Profile</title>
+<style>
+body { font-family: Arial, sans-serif; margin:0; background:#f0f2f5; }
+.profile { background:white; padding:20px; margin:20px auto; width:90%; max-width:600px; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.05); text-align:center; }
+.profile img { width:100px; height:100px; border-radius:50%; display:block; margin:0 auto; }
+.profile h2 { margin:10px 0; }
+.profile button { padding:10px 20px; border:none; border-radius:5px; background:#1877f2; color:white; cursor:pointer; margin-top:10px; }
+.post { margin-top:20px; background:white; padding:15px; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.post video { width:100%; border-radius:10px; margin-top:10px; }
+</style>
+</head>
+<body>
+
+<!-- Include Navigation -->
+<div id="nav"></div>
+
+<div class="profile">
+<img src="avatar.png" alt="Profile Picture">
+<h2>You</h2>
+<button>Edit Profile</button>
+</div>
+
+<div class="container" id="userPosts">
+</div>
+
+<script>
+// Load navigation
+fetch('nav.html').then(res=>res.text()).then(html=>document.getElementById('nav').innerHTML = html);
+
+// Simulated user posts
+const userPosts = [
+    { text:"Had an amazing day hiking!", video:"video.mp4" },
+    { text:"Check out my new reel!", video:"reel.mp4" }
+];
+
+const container = document.getElementById('userPosts');
+userPosts.forEach(p => {
+    container.innerHTML += `
+    <div class="post">
+        <p>${p.text}</p>
+        <video controls src="${p.video}"></video>
+    </div>
+    `;
+});
+</script>
+
+</body>
+</html>

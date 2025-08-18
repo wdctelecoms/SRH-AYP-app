@@ -54,3 +54,15 @@ app.post("/login", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+// --- Verify Token ---
+app.post('/verify-token', (req, res) => {
+    const token = req.headers['authorization'];
+    if(!token) return res.json({ valid:false });
+
+    try {
+        const decoded = jwt.verify(token, 'SECRET_KEY');
+        res.json({ valid:true, user: decoded });
+    } catch(err) {
+        res.json({ valid:false });
+    }
+});

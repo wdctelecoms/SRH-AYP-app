@@ -14,6 +14,15 @@
       text-align: center;
     }
 
+
+.topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
     .container {
       padding: 20px;
       padding-top: 0; /* No space on top */
@@ -23,6 +32,43 @@
       margin-top: 0;
       font-size: 24px;
       padding: 20px 10px 10px;
+    }
+    
+    .menu-btn {
+      background-color: orange;
+      color: #000;
+      border: none;
+      border-radius: 4px;
+      padding: 5px 8px;   /* smaller padding */
+      font-size: 16px;    /* smaller font size */
+      cursor: pointer;
+    }
+
+    .search-box {
+      margin-top: 10px;
+      border-radius: 20px;
+      padding: 8px 15px;
+      font-size: 14px;
+      border: none;
+      width: 200px;
+      max-width: 50%;
+    }
+
+    .dropdown {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .dropdown button {
+      display: block;
+      margin: 10px auto;
+      background-color: orange;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 20px;
+      width: 80%;
+      max-width: 200px;
     }
 
     p {
@@ -49,9 +95,19 @@
   </style>
 </head>
 <body>
+<div class="topbar">
+  <h3>ADOLESCENT YOUTH PLATFORM NETWORK</h3>
+   <button class="menu-btn" onclick="toggleMenu()">☰</button>
+</div>
+  <input id="searchInput" class="search-box" placeholder="Search..." onkeydown="searchKey(event)" />
+<div id="dropdown" class="dropdown">
+    <button>Button 1</button>
+    <button>Button 2</button>
+    <button>settings</button>
+    <button>log out</button>
+  </div>
   <div class="container">
-    <h1>ADOLESCENT YOUTH PLATFORM NETWORK</h1>
-    <p>
+     <p>
       Equiping youths with proper platforms to allow them network in accessing health services, for Your Health, Your Right, Your Future
     </p>
 <h3 style="text-align: left;">Peer-to-peer support forum</h3>
@@ -63,5 +119,46 @@
     <button>Join Meetings</button><br />
     <button>Find Services</button>
   </div>
+  <script>
+    function toggleMenu() {
+      var d = document.getElementById("dropdown");
+      d.style.display = (d.style.display === "block") ? "none" : "block";
+    }
+
+    function searchKey(e) {
+      if (e.key === "Enter") {
+        let term = document.getElementById("searchInput").value.trim();
+        if (term !== "") {
+          window.location.href = "search.html?q=" + encodeURIComponent(term);
+        }
+      }
+    }
+  </script>
+<!-- SRH Article layer -->
+<div class="container">
+  <h3 style="text-align: left;">Sexual & Reproductive Health (SRH) Article</h3>
+ <img src="https://i.ibb.co/832fCR4/Screenshot-20250818-201547.jpg" width="100%" style="border-radius:10px; margin-bottom:10px;" />
+  <p style="text-align: left;">
+    Learn more about SRH and how you can make informed decisions to stay safe and healthy.
+  </p>
+  <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12288995/" target="_blank">
+    <button>Read SRH Article</button>
+  </a>
+</div>
+<!-- SRH Article layer -->
+<div class="container">
+  
+<h3>Parent-adolescent sexual and reproductive health information communication in Ghana</h3> 
+  <img src="https://i.ibb.co/QFJ0TnyY/12978-2025-1961-Fig2-HTML.webp" width="100%" style="border-radius:10px; margin-bottom:10px;" />
+  <p style="text-align: left;">
+   The aim of this article was to integrate the findings from a systematic review and a qualitative study on sexual and reproductive health information communication and the considerations to make in adapting an effective parent-adolescent SRH information communication intervention from the systematic review findings.
+  </p>
+  
+  <!-- PDF Button -->
+  <a href="https://reproductive-health-journal.biomedcentral.com/articles/10.1186/s12978-025-01961-y" target="_blank">
+    <button>Read SRH PDF</button>
+  </a>
+</div>
 </body>
 </html>
+
