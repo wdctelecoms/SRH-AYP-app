@@ -5,55 +5,87 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AYP Dashboard</title>
   <style>
+    /* ===== Global Styles ===== */
     body {
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
+      font-family: "Segoe UI", Arial, sans-serif;
       background: linear-gradient(135deg, #2b5876, #4e4376);
       color: orange;
       text-align: center;
+      line-height: 1.6;
     }
 
+    h1, h3 {
+      margin: 10px 0;
+    }
 
-.topbar {
+    p {
+      font-size: 16px;
+      text-align: left;
+      margin: 10px 0;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* ===== Topbar ===== */
+    .topbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 15px;
-      background: rgba(0, 0, 0, 0.2);
+      padding: 12px 20px;
+      background: rgba(0, 0, 0, 0.3);
     }
 
-    .container {
-      padding: 20px;
-      padding-top: 0; /* No space on top */
+    .topbar h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #fff;
+      letter-spacing: 1px;
     }
 
-    h1 {
-      margin-top: 0;
-      font-size: 24px;
-      padding: 20px 10px 10px;
-    }
-    
-    .menu-btn {
-      background-color: orange;
+    /* ===== Buttons ===== */
+    .menu-btn,
+    .dropdown button,
+    .container button {
+      background: orange;
       color: #000;
       border: none;
-      border-radius: 4px;
-      padding: 5px 8px;   /* smaller padding */
-      font-size: 16px;    /* smaller font size */
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 15px;
+      margin: 8px 0;
       cursor: pointer;
+      transition: background 0.3s ease;
     }
 
+    .menu-btn {
+      padding: 6px 10px;
+      border-radius: 50%;
+      font-size: 18px;
+    }
+
+    .menu-btn:hover,
+    .dropdown button:hover,
+    .container button:hover {
+      background: #ffb733;
+    }
+
+    /* ===== Search Box ===== */
     .search-box {
-      margin-top: 10px;
+      margin: 15px auto;
       border-radius: 20px;
       padding: 8px 15px;
       font-size: 14px;
       border: none;
-      width: 200px;
-      max-width: 50%;
+      outline: none;
+      width: 220px;
+      max-width: 80%;
     }
 
+    /* ===== Dropdown Menu ===== */
     .dropdown {
       display: none;
       margin-top: 10px;
@@ -61,68 +93,110 @@
 
     .dropdown button {
       display: block;
-      margin: 10px auto;
-      background-color: orange;
-      color: #000;
-      border: none;
-      border-radius: 6px;
-      padding: 10px 20px;
       width: 80%;
       max-width: 200px;
+      margin: 10px auto;
     }
 
-    p {
-      font-size: 16px;
-      padding: 0 10px;
+    /* ===== Content Section ===== */
+    .container {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 900px;
+      text-align: left;
+      color: #fff;
     }
 
-    button {
-      background-color: orange;
-      color: #000;
-      border: none;
-      border-radius: 8px;
-      padding: 12px 20px;
-      margin: 10px 0;
-      font-size: 16px;
-      width: 80%;
-      max-width: 300px;
+    .container h3 {
+      color: #ffd280;
+      margin-top: 0;
     }
 
-    button:hover {
-      background-color: #ffa500;
-      cursor: pointer;
+    .container img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin: 12px 0;
     }
   </style>
 </head>
 <body>
-<div class="topbar">
-  <h3>ADOLESCENT YOUTH PLATFORM NETWORK</h3>
-   <button class="menu-btn" onclick="toggleMenu()">☰</button>
-</div>
-  <input id="searchInput" class="search-box" placeholder="Search..." onkeydown="searchKey(event)" />
-<div id="dropdown" class="dropdown">
-    <button>Button 1</button>
-    <button>Button 2</button>
-    <button>settings</button>
-    <button>log out</button>
+  <!-- ===== Topbar ===== -->
+  <div class="topbar">
+    <h3>ADOLESCENT YOUTH PLATFORM NETWORK</h3>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
   </div>
+
+  <!-- ===== Search Box ===== -->
+  <input 
+    id="searchInput" 
+    class="search-box" 
+    placeholder="Search..." 
+    onkeydown="searchKey(event)" 
+  />
+
+  <!-- ===== Dropdown Menu ===== -->
+  <div id="dropdown" class="dropdown">
+    <button>Home</button>
+   <a href="meetings.html"><button>Meetings</button></a>
+    <button>Settings</button>
+    <button>Log Out</button>
+  </div>
+
+  <!-- ===== Intro Section ===== -->
   <div class="container">
-     <p>
-      Equiping youths with proper platforms to allow them network in accessing health services, for Your Health, Your Right, Your Future
+    <p>
+      Equipping youths with proper platforms to allow them to network in accessing health services: 
+      <b>Your Health, Your Right, Your Future</b>.
     </p>
-<h3 style="text-align: left;">Peer-to-peer support forum</h3>
-<img src="https://i.ibb.co/4gnCr1sq/16d2be8f-a4ae-44be-b07b-eebcf766b3dc.jpg" height="250" width="300" alt="16d2be8f-a4ae-44be-b07b-eebcf766b3dc" border="0">
-<p style="text-align: left;">To effectively increase peer-to-peer support for sexual and reproductive health (SRH), we focus on connecting you to safe, inclusive spaces, providing targeted training, and leveraging diverse platforms. This includes establishing peer support groups, utilizing online and offline channels, and engaging community leaders and influencers to promote participation and reduce stigma.</p>
-<a href="peer-peer.html"> <button>Learn More..</button><br /></a>
-<h3 style="text-align: left;">Peer-to-peer support forum</h3>
-    <button>Ask Questions</button><br />
-    <button>Join Meetings</button><br />
-    <button>Find Services</button>
+    
+    <h3>Peer-to-Peer Support Forum</h3>
+    <img src="https://i.ibb.co/4gnCr1sq/16d2be8f-a4ae-44be-b07b-eebcf766b3dc.jpg" alt="Peer Support">
+    <p>
+      To effectively increase peer-to-peer support for sexual and reproductive health (SRH), we focus 
+      on connecting you to safe, inclusive spaces, providing targeted training, and leveraging diverse 
+      platforms. This includes establishing peer support groups, utilizing online and offline channels, 
+      and engaging community leaders and influencers to promote participation and reduce stigma.
+    </p>
+    <a href="peer-peer.html"><button>Learn More</button></a>
+
+    <h3>Engage With Us</h3>
   </div>
+
+  <!-- ===== SRH Article Section ===== -->
+  <div class="container">
+    <h3>Sexual & Reproductive Health (SRH) Article</h3>
+    <img src="https://i.ibb.co/832fCR4/Screenshot-20250818-201547.jpg" alt="SRH Article">
+    <p>
+      Learn more about SRH and how you can make informed decisions to stay safe and healthy.
+    </p>
+    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12288995/" target="_blank">
+      <button>Read SRH Article</button>
+    </a>
+  </div>
+
+  <!-- ===== Research Article Section ===== -->
+  <div class="container">
+    <h3>Parent-Adolescent SRH Communication in Ghana</h3>
+    <img src="https://i.ibb.co/QFJ0TnyY/12978-2025-1961-Fig2-HTML.webp" alt="SRH Communication">
+    <p>
+      This article integrates findings from a systematic review and a qualitative study on SRH 
+      communication, highlighting considerations for adapting effective parent-adolescent 
+      interventions.
+    </p>
+    <a href="https://reproductive-health-journal.biomedcentral.com/articles/10.1186/s12978-025-01961-y" target="_blank">
+      <button>Read Full Article</button>
+    </a>
+  </div>
+
+  <!-- ===== Scripts ===== -->
   <script>
     function toggleMenu() {
-      var d = document.getElementById("dropdown");
-      d.style.display = (d.style.display === "block") ? "none" : "block";
+      const menu = document.getElementById("dropdown");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
     }
 
     function searchKey(e) {
@@ -134,31 +208,5 @@
       }
     }
   </script>
-<!-- SRH Article layer -->
-<div class="container">
-  <h3 style="text-align: left;">Sexual & Reproductive Health (SRH) Article</h3>
- <img src="https://i.ibb.co/832fCR4/Screenshot-20250818-201547.jpg" width="100%" style="border-radius:10px; margin-bottom:10px;" />
-  <p style="text-align: left;">
-    Learn more about SRH and how you can make informed decisions to stay safe and healthy.
-  </p>
-  <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12288995/" target="_blank">
-    <button>Read SRH Article</button>
-  </a>
-</div>
-<!-- SRH Article layer -->
-<div class="container">
-  
-<h3>Parent-adolescent sexual and reproductive health information communication in Ghana</h3> 
-  <img src="https://i.ibb.co/QFJ0TnyY/12978-2025-1961-Fig2-HTML.webp" width="100%" style="border-radius:10px; margin-bottom:10px;" />
-  <p style="text-align: left;">
-   The aim of this article was to integrate the findings from a systematic review and a qualitative study on sexual and reproductive health information communication and the considerations to make in adapting an effective parent-adolescent SRH information communication intervention from the systematic review findings.
-  </p>
-  
-  <!-- PDF Button -->
-  <a href="https://reproductive-health-journal.biomedcentral.com/articles/10.1186/s12978-025-01961-y" target="_blank">
-    <button>Read SRH PDF</button>
-  </a>
-</div>
 </body>
 </html>
-

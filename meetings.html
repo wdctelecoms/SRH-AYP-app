@@ -4,65 +4,151 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Meetings - HRS AYP</title>
-  <link rel="stylesheet" href="styles/style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #2b5876, #4e4376);
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 20px;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 26px;
+      color: orange;
+    }
+
+    header p {
+      font-size: 16px;
+      color: #ddd;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: rgba(255, 255, 255, 0.05);
+      margin: 15px 0;
+      padding: 15px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    li strong {
+      color: orange;
+      font-size: 18px;
+    }
+
+    li.upcoming {
+      background: rgba(255, 165, 0, 0.2);
+      border-left: 5px solid orange;
+    }
+
+    /* Back button */
+    .back-btn {
+      display: inline-block;
+      margin: 30px auto;
+      background: linear-gradient(135deg, #2b5876, #4e4376);
+      color: orange;
+      border: 2px solid orange;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .back-btn:hover {
+      background: orange;
+      color: #2b5876;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #bbb;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <h1>📅 Upcoming AYP Meetings & Events</h1>
+    <h1>Upcoming AYP Meetings & Events</h1>
     <p>Stay informed. Stay connected. Join the movement!</p>
   </header>
 
   <main>
     <section>
-      <ul>
-        <li>
+      <ul id="meetingsList">
+        <li data-date="2025-08-03T10:00:00">
           <strong>SRH Peer Education Workshop</strong><br>
-          📍 Lusaka Youth Center<br>
-          🕒 3rd August 2025, 10:00 AM
+          Location: Lusaka Youth Center<br>
+          Date: 3rd August 2025, 10:00 AM
         </li>
-        <hr>
-        <li>
+
+        <li data-date="2025-08-10T14:00:00">
           <strong>AYP Health & Rights Discussion</strong><br>
-          📍 Kabwe Town Hall (Virtual Link Available)<br>
-          🕒 10th August 2025, 2:00 PM
+          Location: Kabwe Town Hall (Virtual Link Available)<br>
+          Date: 10th August 2025, 2:00 PM
         </li>
-        <hr>
-        <li>
+
+        <li data-date="2025-08-17T17:30:00">
           <strong>Girls Talk: Consent & Boundaries</strong><br>
-          📍 Zoom Session (invite via SMS)<br>
-          🕒 17th August 2025, 5:30 PM
+          Location: Zoom Session (invite via SMS)<br>
+          Date: 17th August 2025, 5:30 PM
         </li>
       </ul>
     </section>
 
-    <p><a href="index.html">← Back to Home</a></p>
+    <div style="text-align: center;">
+      <a href="main.html">
+        <button class="back-btn">← Back to Home</button>
+      </a>
+    </div>
   </main>
-<footer style="background-color: #0a0e1a; color: #ffffff; padding: 40px 20px; font-family: Arial, sans-serif;">
-  <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between;">
 
-    <div style="flex: 1 1 250px; margin-bottom: 20px;">
-      <h2 style="font-size: 1.8em; margin-bottom: 10px;">AYP NETWORK</h2>
-      <p style="font-size: 1em;">Communicating with you in your health is our top priority</p>
-    </div>
-
-    <div style="flex: 1 1 150px; margin-bottom: 20px;">
-      <h3 style="margin-bottom: 10px;">Quick Links</h3>                                                                                               <ul style="list-style: none; padding: 0;">
-        <li><a href="/" style="color: #aaa; text-decoration: none;">Home</a></li>
-        <li><a href="/contact" style="color: #aaa; text-decoration: none;">Contact</a></li>
-        <li><a href="privacypolicy.html" style="color: #aaa; text-decoration: none;">Privacy policy</a></li>
-      </ul>
-    </div>
-
-    <div style="flex: 1 1 200px; margin-bottom: 20px;">
-      <h3 style="margin-bottom: 10px;">Contact</h3>
-      <p>Email: support@aypnetwork@gmail.com</p>
-      <p>Location: all youth friendly spaces</p>
-    </div>
-  </div>
-
-  <div style="border-top: 1px solid #333; text-align: center; padding-top: 20px; margin-top: 30px; font-size: 0.9em; color: #888;">
+  <footer>
     &copy; 2025 AYP NETWORK. All rights reserved.
-  </div>
-</footer>
+  </footer>
+
+  <script>
+    // Highlight the next upcoming meeting
+    const now = new Date();
+    let meetings = document.querySelectorAll("#meetingsList li");
+    let closest = null;
+    let closestTime = Infinity;
+
+    meetings.forEach(meeting => {
+      let meetingDate = new Date(meeting.dataset.date);
+      let timeDiff = meetingDate - now;
+      if (timeDiff > 0 && timeDiff < closestTime) {
+        closestTime = timeDiff;
+        closest = meeting;
+      }
+    });
+
+    if (closest) {
+      closest.classList.add("upcoming");
+    }
+  </script>
 </body>
 </html>
