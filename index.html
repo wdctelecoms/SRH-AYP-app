@@ -87,17 +87,33 @@ section {
   border-radius: 10px;  
   box-shadow: 0 0 15px rgba(0,0,0,0.3);  
 }  
-
 .member h3, .testimonial h3 {  
   margin: 10px 0;  
   color: #ff6f61;  
 }
+
+  img.logo {
+    display: block;
+    margin: 50px auto;
+    width: 200px; /* adjust size */
+    height: auto;
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+
+  img.logo:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+  }
 
   </style>  
 </head>  
 <body>    <header>  
     <button class="get-started" onclick="window.location.href='register.html'">Register</button>  
   </header>    <div class="hero">  
+  <img 
+    src="https://i.ibb.co/v4RLvsLj/file-000000008de86230bbdbc29373ec85a3.png" 
+    alt="Logo" 
+    class="logo">
     <h1>AYP NETWORK</h1>  
     <h2>SRH CONNECTION</h2>  
     <p><em>Empowering The Adolescents By Improving They Well-Being Through Proper Networking</em></p>  

@@ -4,8 +4,94 @@
   <meta charset="UTF-8">
   <title>Login - AYP</title>
   <link rel="stylesheet" href="/css/styles.css">
+  <style>
+/* ====== General Page Setup ====== */
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; /* Stack logo and form vertically */
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #2b5876, #4e4376);
+  font-family: Arial, sans-serif;
+  color: orange;
+}
+
+/* ====== Logo ====== */
+img.logo {
+  display: block;
+  margin-bottom: 30px; /* Space below logo */
+  width: 200px; /* Adjust size */
+  height: auto;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+img.logo:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+/* ====== Container Box ====== */
+.container {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  backdrop-filter: blur(5px);
+}
+
+/* ====== Form ====== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input,
+button {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+}
+
+input {
+  background: white;
+  color: #333;
+}
+
+button {
+  background-color: orange;
+  color: #4e4376;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ffaa00;
+}
+
+/* ====== Links ====== */
+a {
+  color: orange;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+  </style>
 </head>
 <body>
+  <img
+    src="https://i.ibb.co/v4RLvsLj/file-000000008de86230bbdbc29373ec85a3.png"                 alt="Logo"
+    class="logo">
   <div class="container">
     <h2>Login to AYP</h2>
 <form id="loginForm">

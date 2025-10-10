@@ -3,70 +3,95 @@
 <head>
 <title>registration</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #2b5876, #4e4376);
-      font-family: Arial, sans-serif;
-      color: orange;
-    }
+<style>
+/* ====== General Page Setup ====== */
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; /* Stack logo and form vertically */
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #2b5876, #4e4376);
+  font-family: Arial, sans-serif;
+  color: orange;
+}
 
-    .container {
-      background: rgba(255, 255, 255, 0.1); /* semi-transparent box */
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      text-align: center;
-      width: 100%;
-      max-width: 400px;
-      backdrop-filter: blur(5px); /* optional glass effect */
-    }
+/* ====== Logo ====== */
+img.logo {
+  display: block;
+  margin-bottom: 30px; /* Space below logo */
+  width: 200px; /* Adjust size */
+  height: auto;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
 
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
+img.logo:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
 
-    input, button {
-      padding: 10px;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-    }
+/* ====== Container Box ====== */
+.container {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  backdrop-filter: blur(5px);
+}
 
-    input {
-      background: white;
-      color: #333;
-    }
+/* ====== Form ====== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 
-    button {
-      background-color: orange;
-      color: #4e4376;
-      font-weight: bold;
-      cursor: pointer;
-    }
+input,
+button {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+}
 
-    button:hover {
-      background-color: #ffaa00;
-    }
+input {
+  background: white;
+  color: #333;
+}
 
-    a {
-      color: orange;
-      text-decoration: none;
-      font-size: 14px;
-    }
+button {
+  background-color: orange;
+  color: #4e4376;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+button:hover {
+  background-color: #ffaa00;
+}
+
+/* ====== Links ====== */
+a {
+  color: orange;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+</style>
 </head>
 <body>
+  <img
+    src="https://i.ibb.co/v4RLvsLj/file-000000008de86230bbdbc29373ec85a3.png"
+    alt="Logo"
+    class="logo">
 <div class="container">
   <h2 class="form-title">AYP Registration form</h2>
 <form id="registerForm">
@@ -76,6 +101,7 @@
         <input type="text" id="residence" placeholder="Residence" required>
         <input type="number" id="age" placeholder="Age" min="1" required>
         <button type="submit">Register</button>
+        <a href="login.html" class="button">Login if you have an account</a>
     </form>
 
     <script>
