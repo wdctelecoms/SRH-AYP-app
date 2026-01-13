@@ -1,25 +1,20 @@
-import { NextResponse } from 'next/server';
-
-export function middleware(request) {
-  const { pathname } = request.nextUrl;
-
-  // Protect these pages
-  const protectedPages = [
+export const config = {
+  matcher: [
     '/main.html',
     '/dashboard.html',
-    '/search.html'
-  ];
+    '/search.html',
+  ],
+};
 
-  const isProtected = protectedPages.includes(pathname);
-
-  // Read auth cookie
+export default function middleware(request) {
   const authCookie = request.cookies.get('auth');
 
-  if (isProtected && !authCookie) {
-    return NextResponse.redirect(
-      new URL('/login.html', request.url)
+  if (!authCookie) {
+    return Response.redirect(
+      new URL('/login.html', request.url),
+      302
     );
   }
 
-  return NextResponse.next();
+  return Response.next();
 }
