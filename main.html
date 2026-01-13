@@ -140,10 +140,12 @@
 
   <!-- ===== Dropdown Menu ===== -->
   <div id="dropdown" class="dropdown">
-    <button>Home</button>
+   <a href="learn.html"><button>podcast</button></a>
+   <a href="scholarships.html"><button>scholarships</button></a>
    <a href="meetings.html"><button>Meetings</button></a>
-    <button>Settings</button>
-    <button>Log Out</button>
+   <a href="investors.html"> <button>Find investoes</button></a>
+   <a href="youth.html"><button>youth engagement</button></a>
+   <button onclick="logout()">Log Out</button>
   </div>
 
   <!-- ===== Intro Section ===== -->
@@ -192,21 +194,36 @@
     </a>
   </div>
 
-  <!-- ===== Scripts ===== -->
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById("dropdown");
-      menu.style.display = menu.style.display === "block" ? "none" : "block";
-    }
+<!-- ===== Scripts ===== -->
+<script>
+  // Toggle dropdown menu
+  function toggleMenu() {
+    const menu = document.getElementById("dropdown");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+  }
 
-    function searchKey(e) {
-      if (e.key === "Enter") {
-        let term = document.getElementById("searchInput").value.trim();
-        if (term !== "") {
-          window.location.href = "search.html?q=" + encodeURIComponent(term);
-        }
+  // Search function (Enter key)
+  function searchKey(e) {
+    if (e.key === "Enter") {
+      let term = document.getElementById("searchInput").value.trim();
+      if (term !== "") {
+        window.location.href = "search.html?q=" + encodeURIComponent(term);
       }
     }
-  </script>
+  }
+
+  // Logout function
+  function logout() {
+    // Clear session or login info
+    sessionStorage.clear();
+    localStorage.removeItem("user"); // remove logged-in user info
+
+    // Optional: show message
+    alert("You have been logged out.");
+
+    // Redirect to login page
+    window.location.href = "login.html";
+  }
+</script>
 </body>
 </html>

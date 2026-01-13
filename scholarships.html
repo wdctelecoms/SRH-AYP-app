@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scholarship Opportunities</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #2b5876, #4e4376);
+      color: #f1f1f1;
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      padding: 35px 20px;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(6px);
+    }
+
+    header h1 {
+      margin-bottom: 8px;
+      font-size: 28px;
+      color: orange;
+    }
+
+    header p {
+      font-size: 16px;
+      color: #ddd;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .scholarship-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .scholarship-card {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .scholarship-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+    }
+
+    .scholarship-card h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      color: orange;
+      font-size: 20px;
+    }
+
+    .scholarship-card p {
+      font-size: 14.5px;
+      margin: 6px 0;
+      color: #e0e0e0;
+    }
+
+    .focus {
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .amount {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: rgba(255, 165, 0, 0.2);
+      color: orange;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .apply-btn {
+      display: block;
+      margin-top: 18px;
+      text-align: center;
+      padding: 10px;
+      border-radius: 25px;
+      text-decoration: none;
+      border: 2px solid orange;
+      color: orange;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .apply-btn:hover {
+      background: orange;
+      color: #000;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.45);
+      color: #ccc;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Scholarship Opportunities</h1>
+    <p>Find scholarships to fund your education and career growth</p>
+  </header>
+
+  <div class="container">
+    <div class="scholarship-grid">
+
+      <div class="scholarship-card">
+        <h3>Global Excellence Scholarship</h3>
+        <p class="focus">Focus:</p>
+        <p>International Students, Undergraduate Programs</p>
+        <span class="amount">$5,000 – $25,000</span>
+        <a href="#" class="apply-btn">Apply Now</a>
+      </div>
+
+      <div class="scholarship-card">
+        <h3>STEM Innovators Grant</h3>
+        <p class="focus">Focus:</p>
+        <p>Science, Technology, Engineering, Mathematics</p>
+        <span class="amount">$3,000 – $15,000</span>
+        <a href="#" class="apply-btn">Apply Now</a>
+      </div>
+
+      <div class="scholarship-card">
+        <h3>Community Leaders Scholarship</h3>
+        <p class="focus">Focus:</p>
+        <p>Social Impact, Leadership, Volunteering</p>
+        <span class="amount">$2,000 – $10,000</span>
+        <a href="#" class="apply-btn">Apply Now</a>
+      </div>
+
+      <div class="scholarship-card">
+        <h3>Creative Arts Fellowship</h3>
+        <p class="focus">Focus:</p>
+        <p>Arts, Design, Media, Performing Arts</p>
+        <span class="amount">$1,500 – $8,000</span>
+        <a href="#" class="apply-btn">Apply Now</a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    © 2026 Scholarship Network • Empowering Education
+  </footer>
+
+</body>
+</html>

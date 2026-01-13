@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Youth Connect Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #2b5876, #4e4376);
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 20px;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 26px;
+      color: orange;
+    }
+
+    header p {
+      font-size: 16px;
+      color: #ddd;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .search-section {
+      display: flex;
+      margin-bottom: 25px;
+    }
+
+    .search-section input {
+      flex: 1;
+      padding: 12px;
+      border-radius: 25px 0 0 25px;
+      border: none;
+      outline: none;
+    }
+
+    .search-section button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 0 25px 25px 0;
+      background: orange;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: rgba(255, 255, 255, 0.05);
+      margin: 15px 0;
+      padding: 15px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    li:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    li strong {
+      color: orange;
+      font-size: 18px;
+    }
+
+    li.upcoming {
+      background: rgba(255, 165, 0, 0.2);
+      border-left: 5px solid orange;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin: 30px auto;
+      background: linear-gradient(135deg, #2b5876, #4e4376);
+      color: orange;
+      border: 2px solid orange;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: orange;
+      color: #000;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Youth Connect Hub</h1>
+  <p>Helping youths find online opportunities for growth, skills, and leadership</p>
+</header>
+
+<main>
+
+  <div class="search-section">
+    <input type="text" placeholder="Search opportunities (jobs, training, volunteering...)">
+    <button>Search</button>
+  </div>
+
+  <ul>
+    <li class="upcoming">
+      <strong>🌱 Online Volunteering</strong>
+      <p>Volunteer remotely with NGOs and global organizations.</p>
+    </li>
+
+    <li>
+      <strong>💻 Digital Skills Training</strong>
+      <p>Learn coding, design, AI, digital marketing, and tech skills.</p>
+    </li>
+
+    <li>
+      <strong>🚀 Youth Leadership Programs</strong>
+      <p>Leadership, mentorship, and civic engagement programs.</p>
+    </li>
+
+    <li>
+      <strong>💼 Remote Jobs & Internships</strong>
+      <p>Find youth-friendly remote jobs and internships worldwide.</p>
+    </li>
+
+    <li>
+      <strong>🎓 Scholarships & Grants</strong>
+      <p>Access funding opportunities for education and innovation.</p>
+    </li>
+
+    <li>
+      <strong>🌍 Youth Communities</strong>
+      <p>Connect with youth networks, forums, and innovation hubs.</p>
+    </li>
+  </ul>
+
+  <a href="main.html" class="back-btn">← Back</a>
+
+</main>
+
+</body>
+</html>

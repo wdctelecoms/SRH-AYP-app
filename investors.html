@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Investor Network</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #2b5876, #4e4376);
+      color: #f1f1f1;
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      padding: 35px 20px;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(6px);
+    }
+
+    header h1 {
+      margin-bottom: 8px;
+      font-size: 28px;
+      color: orange;
+    }
+
+    header p {
+      font-size: 16px;
+      color: #ddd;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .investor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .investor-card {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .investor-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+    }
+
+    .investor-card h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      color: orange;
+      font-size: 20px;
+    }
+
+    .investor-card p {
+      font-size: 14.5px;
+      margin: 6px 0;
+      color: #e0e0e0;
+    }
+
+    .focus {
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .amount {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: rgba(255, 165, 0, 0.2);
+      color: orange;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .contact-btn {
+      display: block;
+      margin-top: 18px;
+      text-align: center;
+      padding: 10px;
+      border-radius: 25px;
+      text-decoration: none;
+      border: 2px solid orange;
+      color: orange;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .contact-btn:hover {
+      background: orange;
+      color: #000;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.45);
+      color: #ccc;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Investor Opportunities</h1>
+    <p>Connect with trusted investors ready to fund innovative and growing businesses</p>
+  </header>
+
+  <div class="container">
+    <div class="investor-grid">
+
+      <div class="investor-card">
+        <h3>Angel Growth Fund</h3>
+        <p class="focus">Focus:</p>
+        <p>Startups, Technology, Digital Products</p>
+        <span class="amount">$5,000 – $50,000</span>
+        <a href="#" class="contact-btn">Contact Investor</a>
+      </div>
+
+      <div class="investor-card">
+        <h3>Africa Venture Partners</h3>
+        <p class="focus">Focus:</p>
+        <p>Agriculture, FinTech, Renewable Energy</p>
+        <span class="amount">$10,000 – $200,000</span>
+        <a href="#" class="contact-btn">Contact Investor</a>
+      </div>
+
+      <div class="investor-card">
+        <h3>Startup Boost Capital</h3>
+        <p class="focus">Focus:</p>
+        <p>Small Businesses, Retail, E-Commerce</p>
+        <span class="amount">$2,000 – $25,000</span>
+        <a href="#" class="contact-btn">Contact Investor</a>
+      </div>
+
+      <div class="investor-card">
+        <h3>Impact Investors Hub</h3>
+        <p class="focus">Focus:</p>
+        <p>Social Impact, Education, Youth Innovation</p>
+        <span class="amount">$5,000 – $100,000</span>
+        <a href="#" class="contact-btn">Contact Investor</a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    © 2026 Investor Network • Empowering Business Growth
+  </footer>
+
+</body>
+</html>
