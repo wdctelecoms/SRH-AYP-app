@@ -9,6 +9,7 @@ export const config = {
 export default function middleware(request) {
   const authCookie = request.cookies.get('auth');
 
+  // If NOT logged in → redirect
   if (!authCookie) {
     return Response.redirect(
       new URL('/login.html', request.url),
@@ -16,5 +17,6 @@ export default function middleware(request) {
     );
   }
 
-  return Response.next();
+  // ✅ IMPORTANT: DO NOTHING if logged in
+  // (do NOT return Response.next)
 }
