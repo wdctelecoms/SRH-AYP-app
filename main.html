@@ -207,22 +207,21 @@
     if (e.key === "Enter") {
       let term = document.getElementById("searchInput").value.trim();
       if (term !== "") {
-        window.location.href = "search.html?q=" + encodeURIComponent(term);
+        window.location.href =
+          "search.html?q=" + encodeURIComponent(term);
       }
     }
   }
 
-  // Logout function
+  // Logout function (EDGE SAFE)
   function logout() {
-    // Clear session or login info
-    sessionStorage.clear();
-    localStorage.removeItem("user"); // remove logged-in user info
+    // 🔴 DELETE auth cookie (this is what middleware checks)
+    document.cookie = "auth=; path=/; max-age=0;";
 
-    // Optional: show message
     alert("You have been logged out.");
 
-    // Redirect to login page
-    window.location.href = "login.html";
+    // 🔒 Remove page from history (BACK BUTTON FIX)
+    window.location.replace("login.html");
   }
 </script>
 </body>
