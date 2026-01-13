@@ -193,36 +193,42 @@
       <button>Read Full Article</button>
     </a>
   </div>
-
 <!-- ===== Scripts ===== -->
-<script>  
-  // Toggle dropdown menu  
-  function toggleMenu() {  
-    const menu = document.getElementById("dr>  
-    menu.style.display = menu.style.display >  
-  }  
-  
-  // Search function (Enter key)  
-  function searchKey(e) {  
-    if (e.key === "Enter") {  
-      let term = document.getElementById("se>  
-      if (term !== "") {                             window.location.href = "search.html?>  
-      }  
-    }  
-  }  
-  
-  // Logout function  
-  function logout() {  
-    // Clear session or login info  
-    sessionStorage.clear();  
-    localStorage.removeItem("user"); // remo>  
-  
-    // Optional: show message  
-    alert("You have been logged out.");  
-  
-    // Redirect to login page  
-    window.location.href = "login.html";  
-  }  
-</scrip >
+<script>
+  // Toggle dropdown menu
+  function toggleMenu() {
+    const menu = document.getElementById("dropdown");
+    if (!menu) return;
+
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+  }
+
+  // Search function (Enter key)
+  function searchKey(event) {
+    if (event.key === "Enter") {
+      const input = document.getElementById("searchInput");
+      if (!input) return;
+
+      const term = input.value.trim();
+      if (term !== "") {
+        window.location.href =
+          "search.html?q=" + encodeURIComponent(term);
+      }
+    }
+  }
+
+  // Logout function
+  function logout() {
+    // Clear session or login info
+    sessionStorage.clear();
+    localStorage.removeItem("user");
+
+    // Optional message
+    alert("You have been logged out.");
+
+    // Redirect to login page
+    window.location.href = "login.html";
+  }
+</script>
 </body>
 </html>
