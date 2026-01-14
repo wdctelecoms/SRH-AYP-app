@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ask Questions | AYP Network</title>
+
+  <!-- EmailJS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #2b5876, #4e4376);
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    header h1 {
+      color: orange;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      opacity: 0.9;
+    }
+
+    .dashboard {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 25px;
+    }
+
+    .card {
+      background: rgba(0, 0, 0, 0.25);
+      padding: 25px;
+      border-radius: 14px;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      color: #ffd27f;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      font-size: 15px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    button {
+      margin-top: 20px;
+      background-color: orange;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #ffb733;
+    }
+
+    .info-box {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.85em;
+      color: #ccc;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Ask a Question</h1>
+    <p>Get confidential support from AYP Network professionals</p>
+  </header>
+
+  <div class="dashboard">
+
+    <!-- INFO CARD -->
+    <div class="card">
+      <h2>How It Works</h2>
+      <p class="info-box">
+        Submit your question below. Your message will be sent securely to
+        <strong>AIPnetwork@gmail.com</strong>.  
+        A qualified peer supporter or professional will review it.
+      </p>
+    </div>
+
+    <!-- FORM CARD -->
+    <div class="card">
+      <h2>Submit Your Question</h2>
+
+      <form id="questionForm">
+        <label>Your Name</label>
+        <input type="text" name="name" required placeholder="Your full name">
+
+        <label>Your Email</label>
+        <input type="email" name="email" required placeholder="your@email.com">
+
+        <label>Topic</label>
+        <select name="topic">
+          <option>Sexual & Reproductive Health</option>
+          <option>Mental Health</option>
+          <option>Peer Support</option>
+          <option>Relationships</option>
+          <option>Other</option>
+        </select>
+
+        <label>Your Question</label>
+        <textarea name="message" required placeholder="Type your question here..."></textarea>
+
+        <button type="submit">Send Question</button>
+      </form>
+    </div>
+
+  </div>
+
+  <footer>
+    &copy; 2025 AYP NETWORK. All rights reserved.
+  </footer>
+
+  <!-- EMAIL SCRIPT -->
+  <script>
+    (function(){
+      emailjs.init("YOUR_PUBLIC_KEY"); // <-- Replace later
+    })();
+
+    document.getElementById("questionForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      emailjs.send("service_djnjoih", "template_ta4qpke", {
+        name: this.name.value,
+        email: this.email.value,
+        topic: this.topic.value,
+        message: this.message.value,
+        to_email: "aypsrhnetwork@gmail.com"
+      }).then(
+        function() {
+          alert("Your question has been sent successfully.");
+          document.getElementById("questionForm").reset();
+        },
+        function(error) {
+          alert("Failed to send. Please try again.");
+          console.log(error);
+        }
+      );
+    });
+  </script>
+
+</body>
+</html>

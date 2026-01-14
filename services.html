@@ -1,55 +1,152 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Find Services - HRS AYP</title>
-  <link rel="stylesheet" href="styles/style.css" />
+  <title>Find Services | AYP Network</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #2b5876, #4e4376);
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    header h1 {
+      color: orange;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    h2 {
+      color: orange;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .service-card {
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 25px;
+    }
+
+    .service-card h3 {
+      margin-top: 0;
+      color: #ffd27f;
+    }
+
+    .service-card p {
+      margin: 6px 0;
+    }
+
+    .links a {
+      display: inline-block;
+      margin: 5px 10px 5px 0;
+      color: orange;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: orange;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 22px;
+      margin: 30px auto;
+      font-size: 16px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #ffb733;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.85em;
+      color: #ccc;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      margin-top: 40px;
+    }
+  </style>
 </head>
+
 <body>
+
   <header>
-    <h1 style="text-align: center;">Find Safe Youth Friendly Space You</h1>
-    <p>Safe,youth-friendly spaces and SRH services</p>
+    <h1>Find Safe & Youth-Friendly Spaces</h1>
+    <p>Access trusted Sexual & Reproductive Health (SRH) services and support</p>
   </header>
 
-<h2>youth friendly spaces</h2>
-  <main>
-    <section>
-      <ul>
-        <li>
-          <strong>Men Of Honour</strong><br>
-           Vale Road Lusaka, 10101<br>
-           +260 976 123 456
-           other links
-           facebook 
-           https://www.facebook.com/share/16e9ZCd9iX/
-           website 
-           https://www.menofhonourzm.org
-           tiktok
-           https://vm.tiktok.com/ZMSopJ3V3/
-           Instagram
-           https://www.instagram.com/themenofhonour?igsh=ZmJtNTB1b3N4cW9r
-        </li>
-        <hr>
-        <li>
-          <strong>Kabwe Reproductive Health Centre</strong><br>
-           Independence Avenue, Kabwe<br>
-           +260 972 234 567
-        </li>
-        <hr>
-        <li>
-          <strong>24/7 SRH Helpline</strong><br>
-          116 (Free Call)<br>
-           Available any time
-        </li>
-      </ul>
-    </section>
+  <div class="container">
+    <h2>Youth-Friendly Services</h2>
 
-  <a href="peer-peer.html"><button  style="background: linear-gradient(135deg, #2b5876, #4e4376); color: #fffff; font-size: 1.22em; align: center;">Back</button></a>
-  </main>
-    <div style="border-top: 1px solid #333; padding-top: 20px; color: #888; font-size: 0.85em;">
-      &copy; 2025 AYP NETWORK. All rights reserved.
+    <!-- SERVICE 1 -->
+    <div class="service-card">
+      <h3>Men Of Honour</h3>
+      <p><strong>Location:</strong> Vale Road, Lusaka 10101</p>
+      <p><strong>Phone:</strong> +260 976 123 456</p>
+
+      <div class="links">
+        <a href="https://www.facebook.com/share/16e9ZCd9iX/" target="_blank">Facebook</a>
+        <a href="https://www.menofhonourzm.org" target="_blank">Website</a>
+        <a href="https://vm.tiktok.com/ZMSopJ3V3/" target="_blank">TikTok</a>
+        <a href="https://www.instagram.com/themenofhonour?igsh=ZmJtNTB1b3N4cW9r" target="_blank">Instagram</a>
+      </div>
     </div>
+
+    <!-- SERVICE 2 -->
+    <div class="service-card">
+      <h3>Kabwe Reproductive Health Centre</h3>
+      <p><strong>Location:</strong> Independence Avenue, Kabwe</p>
+      <p><strong>Phone:</strong> +260 972 234 567</p>
+    </div>
+
+    <!-- SERVICE 3 -->
+    <div class="service-card">
+      <h3>24/7 SRH Helpline</h3>
+      <p><strong>Call:</strong> 116 (Free Call)</p>
+      <p><strong>Availability:</strong> 24 Hours / 7 Days</p>
+    </div>
+
+    <div class="center">
+      <a href="peer-peer.html" class="btn">Back to Peer Support</a>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 AYP NETWORK. All rights reserved.
+  </footer>
+
 </body>
 </html>
