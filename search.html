@@ -39,60 +39,79 @@
 
   <h1>Search Results</h1>
   <div id="results"></div>
+<script>
+  // ===== Page Protection =====
+  if (localStorage.getItem("loggedIn") !== "true") {
+    // If not logged in, redirect to login page
+    window.location.href = "login.html";
+  }
 
-  <script>
-    // Get search term from URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const query = urlParams.get('q') ? urlParams.get('q').toLowerCase() : '';
+  // ===== Prevent Back Button After Logout =====
+  history.pushState(null, null, location.href);
+  window.onpopstate = function () {
+    history.go(1);
+  };
 
-    // Define your pages and their content
-    const pages = [
-      {
-        title: "Adolescent Youth Platform Network",
-        url: "index.html",
-        content: `Equipping youths with proper platforms to allow them network in accessing health services.
-                  Peer-to-peer support forum. Ask Questions. Join Meetings. Find Services.`
-      },
-      {
-        title: "Peer-to-Peer Support Forum",
-        url: "peer-peer.html",
-        content: `This page helps youths connect with peers. Learn more about discussions, meetings, and support.`
-      },
-      {
-        title: "Find Services",
-        url: "services.html",
-        content: `Locate health services and programs available for adolescents and youths.`
-      },
-      {
-        title: "Join Meetings",
-        url: "meetings.html",
-        content: `Information about upcoming peer meetings and support sessions.`
-      }
-    ];
+  // ===== Logout Function =====
+  function logout() {
+    localStorage.removeItem("loggedIn"); // remove only login flag
+    alert("You have been logged out.");
+    window.location.href = "login.html";
+  }
 
-    const resultsDiv = document.getElementById("results");
+  // ===== Existing Search Script =====
+  // Get search term from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const query = urlParams.get('q') ? urlParams.get('q').toLowerCase() : '';
 
-    if (!query) {
-      resultsDiv.innerHTML = "<p>Please enter a search term.</p>";
-    } else {
-      let resultsFound = 0;
-      pages.forEach(page => {
-        if (page.content.toLowerCase().includes(query)) {
-          resultsFound++;
-          // Extract a small snippet around the search term
-          const index = page.content.toLowerCase().indexOf(query);
-          snippet = page.content.substr(Math.max(0, index - 20), 100) + "...";
-          const div = document.createElement("div");
-          div.className = "result";
-          div.innerHTML = `<a href="${page.url}">${page.title}</a><p>${snippet}</p>`;
-          resultsDiv.appendChild(div);
-        }
-      });
-      if (resultsFound === 0) {
-        resultsDiv.innerHTML = "<p>No results found.</p>";
-      }
+  // Define your pages and their content
+  const pages = [
+    {
+      title: "Adolescent Youth Platform Network",
+      url: "index.html",
+      content: `Equipping youths with proper platforms to allow them network in accessible ways.
+                Peer-to-peer support forum. Ask Questions. Join Meetings. Find Services.`
+    },
+    {
+      title: "Peer-to-Peer Support Forum",
+      url: "peer-peer.html",
+      content: `This page helps youths connect with peers. Learn more about discussions.`
+    },
+    {
+      title: "Find Services",
+      url: "services.html",
+      content: `Locate health services and programs available for adolescents and youth.`
+    },
+    {
+      title: "Join Meetings",
+      url: "meetings.html",
+      content: `Information about upcoming peer meetings and support sessions.`
     }
-  </script>
+  ];
+
+  const resultsDiv = document.getElementById("results");
+
+  if (!query) {
+    resultsDiv.innerHTML = "<p>Please enter a search term.</p>";
+  } else {
+    let resultsFound = 0;
+    pages.forEach(page => {
+      if (page.content.toLowerCase().includes(query)) {
+        resultsFound++;
+        // Extract a small snippet around the search term
+        const index = page.content.toLowerCase().indexOf(query);
+        const snippet = page.content.substr(Math.max(0, index - 20), 100) + "...";
+        const div = document.createElement("div");
+        div.className = "result";
+        div.innerHTML = `<a href="${page.url}">${page.title}</a><p>${snippet}</p>`;
+        resultsDiv.appendChild(div);
+      }
+    });
+    if (resultsFound === 0) {
+      resultsDiv.innerHTML = "<p>No results found.</p>";
+    }
+  }
+</script>
 
 </body>
 </html>

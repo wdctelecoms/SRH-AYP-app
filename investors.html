@@ -27,6 +27,26 @@
       color: orange;
     }
 
+    /* Back button */
+    .back-btn {
+      display: inline-block;
+      margin: 30px auto;
+      background: linear-gradient(135deg, #2b5876, #4e4376);
+      color: orange;
+      border: 2px solid orange;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    .back-btn:hover {
+      background: orange;
+      color: #2b5876;
+    }
+
     header p {
       font-size: 16px;
       color: #ddd;
@@ -159,6 +179,29 @@
 
     </div>
   </div>
+      <a href="main.html">
+        <button class="back-btn">← Back to Home</button>
+      </a>
+<script>
+  // ===== Page Protection =====
+  if (localStorage.getItem("loggedIn") !== "true") {
+    // If not logged in, redirect to login page
+    window.location.href = "login.html";
+  }
+
+  // ===== Prevent Back Button After Logout =====
+  history.pushState(null, null, location.href);
+  window.onpopstate = function () {
+    history.go(1);
+  };
+
+  // ===== Optional Logout Function =====
+  function logout() {
+    localStorage.removeItem("loggedIn"); // remove only login flag
+    alert("You have been logged out.");
+    window.location.href = "login.html";
+  }
+</script>
 
   <footer>
     © 2026 Investor Network • Empowering Business Growth

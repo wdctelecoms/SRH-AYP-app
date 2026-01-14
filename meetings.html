@@ -129,26 +129,44 @@
   <footer>
    &copy; 2025 AYP NETWORK. All rights reserved.
   </footer>
+<script>
+  // ===== Page Protection =====
+  if (localStorage.getItem("loggedIn") !== "true") {
+    // If not logged in, redirect to login page
+    window.location.href = "login.html";
+  }
 
-  <script>
-    // Highlight the next upcoming meeting
-    const now = new Date();
-    let meetings = document.querySelectorAll("#meetingsList li");
-    let closest = null;
-    let closestTime = Infinity;
+  // ===== Prevent Back Button After Logout =====
+  history.pushState(null, null, location.href);
+  window.onpopstate = function () {
+    history.go(1);
+  };
 
-    meetings.forEach(meeting => {
-      let meetingDate = new Date(meeting.dataset.date);
-      let timeDiff = meetingDate - now;
-      if (timeDiff > 0 && timeDiff < closestTime) {
-        closestTime = timeDiff;
-        closest = meeting;
-      }
-    });
+  // ===== Logout Function =====
+  function logout() {
+    localStorage.removeItem("loggedIn"); // remove only login flag
+    alert("You have been logged out.");
+    window.location.href = "login.html";
+  }
 
-    if (closest) {
-      closest.classList.add("upcoming");
+  // ===== Existing Meeting Highlight Script =====
+  const now = new Date();
+  let meetings = document.querySelectorAll("#meetingsList > li"); // fixed selector
+  let closest = null;
+  let closestTime = Infinity;
+
+  meetings.forEach(meeting => {
+    let meetingDate = new Date(meeting.dataset.date);
+    let timeDiff = meetingDate - now;
+    if (timeDiff > 0 && timeDiff < closestTime) {
+      closestTime = timeDiff;
+      closest = meeting;
     }
-  </script>
+  });
+
+  if (closest) {
+    closest.classList.add("upcoming");
+  }
+</script>
 </body>
 </html>

@@ -195,7 +195,19 @@
   </div>
 <!-- ===== Scripts ===== -->
 <script>
-  // Toggle dropdown menu
+  // ===== Page Protection =====
+  if (localStorage.getItem("loggedIn") !== "true") {
+    // If not logged in, redirect to login page
+    window.location.href = "login.html";
+  }
+
+  // Prevent going back to this page after logout
+  history.pushState(null, null, location.href);
+  window.onpopstate = function () {
+    history.go(1);
+  };
+
+  // ===== Toggle dropdown menu =====
   function toggleMenu() {
     const menu = document.getElementById("dropdown");
     if (!menu) return;
@@ -203,7 +215,7 @@
     menu.style.display = (menu.style.display === "block") ? "none" : "block";
   }
 
-  // Search function (Enter key)
+  // ===== Search function (Enter key) =====
   function searchKey(event) {
     if (event.key === "Enter") {
       const input = document.getElementById("searchInput");
@@ -217,11 +229,11 @@
     }
   }
 
-  // Logout function
+  // ===== Logout function =====
   function logout() {
-    // Clear session or login info
+    // Clear only login session
     sessionStorage.clear();
-    localStorage.removeItem("user");
+    localStorage.removeItem("loggedIn"); // <-- do NOT remove the user
 
     // Optional message
     alert("You have been logged out.");

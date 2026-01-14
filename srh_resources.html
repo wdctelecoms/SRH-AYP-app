@@ -64,6 +64,25 @@
       <a href="https://www.facebook.com/100064049682487/posts/1170346678443644/?mibextid=rS40aB7S9Ucbxw6v" target="_blank">Read on Facebook →</a>
     </div>
   </div>
+<script>
+  // ===== Page Protection =====
+  if (localStorage.getItem("loggedIn") !== "true") {
+    // If not logged in, redirect to login page
+    window.location.href = "login.html";
+  }
 
+  // ===== Prevent Back Button After Logout =====
+  history.pushState(null, null, location.href);
+  window.onpopstate = function () {
+    history.go(1);
+  };
+
+  // ===== Optional Logout Function =====
+  function logout() {
+    localStorage.removeItem("loggedIn"); // remove only login flag
+    alert("You have been logged out.");
+    window.location.href = "login.html";
+  }
+</script>
 </body>
 </html>

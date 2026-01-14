@@ -157,32 +157,51 @@
   </footer>
 
   <!-- EMAIL SCRIPT -->
-  <script>
-    (function(){
-      emailjs.init("IhQhPeHN65bqWwbfp"); // <-- Replace later
-    })();
+<script>
+  // ===== Page Protection =====
+  if (localStorage.getItem("loggedIn") !== "true") {
+    // If not logged in, redirect to login page
+    window.location.href = "login.html";
+  }
 
-    document.getElementById("questionForm").addEventListener("submit", function(e) {
-      e.preventDefault();
+  // ===== Prevent Back Button After Logout =====
+  history.pushState(null, null, location.href);
+  window.onpopstate = function () {
+    history.go(1);
+  };
 
-      emailjs.send("service_djnjoih", "template_ta4qpke", {
-        name: this.name.value,
-        email: this.email.value,
-        topic: this.topic.value,
-        message: this.message.value,
-        to_email: "aypsrhnetwork@gmail.com"
-      }).then(
-        function() {
-          alert("Your question has been sent successfully.");
-          document.getElementById("questionForm").reset();
-        },
-        function(error) {
-          alert("Failed to send. Please try again.");
-          console.log(error);
-        }
-      );
-    });
-  </script>
+  // ===== Logout Function =====
+  function logout() {
+    localStorage.removeItem("loggedIn"); // remove only login flag
+    alert("You have been logged out.");
+    window.location.href = "login.html";
+  }
 
+  // ===== Existing EmailJS Script =====
+  (function(){
+    emailjs.init("IhQhPeHN65bqWwbfp"); // <-- Replace with your actual public key
+  })();
+
+  document.getElementById("questionForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    emailjs.send("service_djnjoih", "template_ta4qpke", {
+      name: this.name.value,
+      email: this.email.value,
+      topic: this.topic.value,
+      message: this.message.value,
+      to_email: "aypsrhnetwork@gmail.com"
+    }).then(
+      function() {
+        alert("Your question has been sent successfully.");
+        document.getElementById("questionForm").reset();
+      },
+      function(error) {
+        alert("Failed to send. Please try again.");
+        console.log(error);
+      }
+    );
+  });
+</script>
 </body>
 </html>
