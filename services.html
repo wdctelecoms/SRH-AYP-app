@@ -147,6 +147,26 @@
   <footer>
     &copy; 2025 AYP NETWORK. All rights reserved.
   </footer>
+<script>
+  // ===== Page Protection =====
+  if (localStorage.getItem("loggedIn") !== "true") {
+    // If not logged in, redirect to login page
+    window.location.href = "login.html";
+  }
 
+  // ===== Prevent Back Button After Logout =====
+  history.pushState(null, null, location.href);
+  window.onpopstate = function () {
+    history.go(1);
+  };
+
+  // ===== Optional Logout Function =====
+  // If this page has a logout button, call this function
+  function logout() {
+    localStorage.removeItem("loggedIn"); // remove only login flag
+    alert("You have been logged out.");
+    window.location.href = "login.html";
+  }
+</script>
 </body>
 </html>
